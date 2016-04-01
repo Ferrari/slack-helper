@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {},
   "keywords": [
-    "slack"
+    "slack",
+    "webhook"
   ],
   "author": "Ferrari Lee <shiyung@positivegrid.com>",
   "dependencies": {
