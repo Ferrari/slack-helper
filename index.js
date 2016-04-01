@@ -2,7 +2,6 @@
 
 const _ = require('lodash');
 const got = require('got');
-const debug = require('debug')('slack-helper');
 
 const SLACK_API = 'https://slack.com/api/';
 
