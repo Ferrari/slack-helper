@@ -59,7 +59,6 @@ slackHelper.prototype = {
         if (!groupName) {
           result = resp.body.groups;
         } else {
-          console.log(resp.body)
           let ret = _.find(resp.body.groups, {'name': groupName});
 
           if (!ret) {
