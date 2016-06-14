@@ -44,6 +44,37 @@ slackHelper.prototype = {
       });
     });
   },
+  getGroup: function(groupName) {
+    let self = this;
+    let reqUrl = `${SLACK_API}/groups.list`;
+
+    return new Promise((resolve, reject) => {
+      got.get(reqUrl, {
+        json: true,
+        query: {
+          token: self.token
+        }
+      }).then(resp => {
+        let result;
+        if (!groupName) {
+          result = resp.body.groups;
+        } else {
+          console.log(resp.body)
+          let ret = _.find(resp.body.groups, {'name': groupName});
+
+          if (!ret) {
+            reject(new Error(`Can not find ${groupName}`));
+          } else {
+            result = ret;
+          }
+        }
+
+        resolve(result);
+      }).catch(error => {
+        reject(error);
+      })
+    });
+  },
   send: function(channel, message, opts) {
     let self = this;
     let reqUrl = `${SLACK_API}/chat.postMessage`;
